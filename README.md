@@ -1,0 +1,2 @@
+# Inventario
+Almacena tus articulos
