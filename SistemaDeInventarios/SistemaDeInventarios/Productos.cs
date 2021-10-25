@@ -22,9 +22,20 @@ namespace SistemaDeInventarios
         }
 
         private void Productos_Load(object sender, EventArgs e)
-        {            
+        {
+            // TODO: This line of code loads data into the 'dSInventario.Marca' table. You can move, or remove it, as needed.
+            this.marcaTableAdapter.Fill(this.dSInventario.Marca);
+            // TODO: This line of code loads data into the 'dSInventario.Marca' table. You can move, or remove it, as needed.
+            this.marcaTableAdapter.Fill(this.dSInventario.Marca);
+            // TODO: This line of code loads data into the 'dSInventario.Categoria' table. You can move, or remove it, as needed.
+            this.categoriaTableAdapter.Fill(this.dSInventario.Categoria);
             this.cmbCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+
+            this.cmbCategoria.SelectedIndex = -1;
+            this.cmbMarca.SelectedIndex = -1;
+            
+
         }
 
         private void btnAgregarImagen_Click(object sender, EventArgs e)
@@ -67,8 +78,8 @@ namespace SistemaDeInventarios
             {
                 SqlConnection conexion = new SqlConnection(cadenita);
                 string nombreDelProducto = txtNombreDelProducto.Text;
-                string categoria = cmbCategoria.Text;
-                string marca = cmbMarca.Text;
+                string categoria = cmbCategoria.SelectedValue.ToString();
+                string marca = cmbMarca.SelectedValue.ToString();
                 int cantidad = Convert.ToInt32(txtCantidad.Text);
                 Double precio = Convert.ToDouble(txtPrecio.Text);
                 string descripcion = txtDescripcion.Text;
@@ -119,6 +130,7 @@ namespace SistemaDeInventarios
                         comando.Parameters.Add("@p7", SqlDbType.DateTime).Value = diaDeRegistro;
                         comando.ExecuteNonQuery();
                         conexion.Close();
+                        
                     }
                     catch (Exception e1)
                     {

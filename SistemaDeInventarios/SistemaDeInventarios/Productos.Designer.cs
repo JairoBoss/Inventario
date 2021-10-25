@@ -29,10 +29,14 @@ namespace SistemaDeInventarios
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cmbDate = new System.Windows.Forms.DateTimePicker();
             this.txtNombreDelProducto = new System.Windows.Forms.TextBox();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
+            this.categoriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dSInventario = new SistemaDeInventarios.DSInventario();
             this.cmbMarca = new System.Windows.Forms.ComboBox();
+            this.fKMarcaCategoriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
@@ -44,12 +48,19 @@ namespace SistemaDeInventarios
             this.btnCancelar = new System.Windows.Forms.PictureBox();
             this.btnAgregar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.categoriaTableAdapter = new SistemaDeInventarios.DSInventarioTableAdapters.CategoriaTableAdapter();
+            this.marcaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.marcaTableAdapter = new SistemaDeInventarios.DSInventarioTableAdapters.MarcaTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.categoriaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSInventario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKMarcaCategoriaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagenProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregarImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancelar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marcaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbDate
@@ -75,37 +86,42 @@ namespace SistemaDeInventarios
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.DataSource = this.categoriaBindingSource;
+            this.cmbCategoria.DisplayMember = "Nombre";
             this.cmbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Items.AddRange(new object[] {
-            "Papeleria",
-            "Cafeteria",
-            "Electronicos",
-            "Higiene",
-            "Otro"});
             this.cmbCategoria.Location = new System.Drawing.Point(109, 138);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(158, 28);
             this.cmbCategoria.TabIndex = 5;
+            this.cmbCategoria.ValueMember = "Id";
+            // 
+            // categoriaBindingSource
+            // 
+            this.categoriaBindingSource.DataMember = "Categoria";
+            this.categoriaBindingSource.DataSource = this.dSInventario;
+            // 
+            // dSInventario
+            // 
+            this.dSInventario.DataSetName = "DSInventario";
+            this.dSInventario.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // cmbMarca
             // 
+            this.cmbMarca.DataSource = this.fKMarcaCategoriaBindingSource;
+            this.cmbMarca.DisplayMember = "Marca";
             this.cmbMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMarca.FormattingEnabled = true;
-            this.cmbMarca.Items.AddRange(new object[] {
-            "Amazon",
-            "PrismaColor",
-            "Bic",
-            "Scribe",
-            "Casio",
-            "Steren",
-            "Kingston",
-            "Logitech",
-            "Generico"});
             this.cmbMarca.Location = new System.Drawing.Point(109, 222);
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(158, 28);
             this.cmbMarca.TabIndex = 9;
+            this.cmbMarca.ValueMember = "Id";
+            // 
+            // fKMarcaCategoriaBindingSource
+            // 
+            this.fKMarcaCategoriaBindingSource.DataMember = "FK_Marca_Categoria";
+            this.fKMarcaCategoriaBindingSource.DataSource = this.categoriaBindingSource;
             // 
             // txtCantidad
             // 
@@ -208,6 +224,19 @@ namespace SistemaDeInventarios
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // categoriaTableAdapter
+            // 
+            this.categoriaTableAdapter.ClearBeforeFill = true;
+            // 
+            // marcaBindingSource
+            // 
+            this.marcaBindingSource.DataMember = "Marca";
+            this.marcaBindingSource.DataSource = this.dSInventario;
+            // 
+            // marcaTableAdapter
+            // 
+            this.marcaTableAdapter.ClearBeforeFill = true;
+            // 
             // Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,12 +259,16 @@ namespace SistemaDeInventarios
             this.Name = "Productos";
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.Productos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.categoriaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSInventario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKMarcaCategoriaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagenProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregarImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancelar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marcaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,5 +290,11 @@ namespace SistemaDeInventarios
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.PictureBox imagenProducto;
+        private DSInventario dSInventario;
+        private System.Windows.Forms.BindingSource categoriaBindingSource;
+        private DSInventarioTableAdapters.CategoriaTableAdapter categoriaTableAdapter;
+        private System.Windows.Forms.BindingSource marcaBindingSource;
+        private DSInventarioTableAdapters.MarcaTableAdapter marcaTableAdapter;
+        private System.Windows.Forms.BindingSource fKMarcaCategoriaBindingSource;
     }
 }

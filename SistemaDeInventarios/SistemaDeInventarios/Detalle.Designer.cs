@@ -124,7 +124,7 @@ namespace SistemaDeInventarios
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::SistemaDeInventarios.Properties.Resources.Aceptar;
-            this.pictureBox4.Location = new System.Drawing.Point(527, 387);
+            this.pictureBox4.Location = new System.Drawing.Point(531, 388);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(119, 42);
             this.pictureBox4.TabIndex = 28;
@@ -183,6 +183,8 @@ namespace SistemaDeInventarios
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.txtNombreDelProducto);
             this.Controls.Add(this.pictureBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Detalle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle";

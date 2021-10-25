@@ -64,6 +64,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Categorias.Designer.cs">
+      <DependentUpon>Categorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clases\Encriptar.cs" />
     <Compile Include="Clases\Producto.cs" />
     <Compile Include="Detalle.cs">
@@ -71,6 +77,20 @@
     </Compile>
     <Compile Include="Detalle.Designer.cs">
       <DependentUpon>Detalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DSInventario.cs">
+      <DependentUpon>DSInventario.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSInventario.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSInventario.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="editar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editar.Designer.cs">
+      <DependentUpon>editar.cs</DependentUpon>
     </Compile>
     <Compile Include="Error.cs">
       <SubType>Form</SubType>
@@ -116,8 +136,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Categorias.resx">
+      <DependentUpon>Categorias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Detalle.resx">
       <DependentUpon>Detalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editar.resx">
+      <DependentUpon>editar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Error.resx">
       <DependentUpon>Error.cs</DependentUpon>
@@ -150,6 +176,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="DSInventario.xsc">
+      <DependentUpon>DSInventario.xsd</DependentUpon>
+    </None>
+    <None Include="DSInventario.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSInventario.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSInventario.xss">
+      <DependentUpon>DSInventario.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -310,6 +347,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Aceptar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AceptarButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EliminarButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DetallesButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DetallesButton1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditarButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AceptarButton1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AceptarButton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Categoria.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CategoriasDesing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CategoriasDesing1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CategoriasDesing2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\design.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actualizar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

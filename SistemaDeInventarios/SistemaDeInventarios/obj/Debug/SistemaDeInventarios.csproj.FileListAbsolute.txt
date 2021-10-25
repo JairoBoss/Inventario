@@ -23,3 +23,5 @@ C:\Users\jairo\source\repos\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\
 C:\Users\jairo\source\repos\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.home.resources
 C:\Users\jairo\source\repos\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.NoListo.resources
 C:\Users\jairo\source\repos\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.Detalle.resources
+C:\Users\jairo\source\repos\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.editar.resources
+C:\Users\jairo\source\repos\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.Categorias.resources

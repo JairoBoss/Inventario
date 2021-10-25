@@ -116,5 +116,10 @@ namespace SistemaDeInventarios
         {
             abrirFormEnPanel(new ListaProductos());
         }
+
+        private void categoriaButton_Click(object sender, EventArgs e)
+        {
+            abrirFormEnPanel(new Categorias());
+        }
     }
 }
