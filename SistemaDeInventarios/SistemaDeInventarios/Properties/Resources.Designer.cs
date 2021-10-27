@@ -83,6 +83,16 @@ namespace SistemaDeInventarios.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap aaaaaaaaaaaa {
+            get {
+                object obj = ResourceManager.GetObject("aaaaaaaaaaaa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Aceptar {
             get {
                 object obj = ResourceManager.GetObject("Aceptar", resourceCulture);
@@ -413,6 +423,26 @@ namespace SistemaDeInventarios.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap export {
+            get {
+                object obj = ResourceManager.GetObject("export", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exportar {
+            get {
+                object obj = ResourceManager.GetObject("exportar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Final {
             get {
                 object obj = ResourceManager.GetObject("Final", resourceCulture);
@@ -546,6 +576,16 @@ namespace SistemaDeInventarios.Properties {
         internal static System.Drawing.Bitmap Inventario1 {
             get {
                 object obj = ResourceManager.GetObject("Inventario1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Invetario {
+            get {
+                object obj = ResourceManager.GetObject("Invetario", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

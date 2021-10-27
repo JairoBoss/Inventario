@@ -3263,7 +3263,7 @@ FROM            Productos INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DSInventario.MarcaDataTable GetDataBy(global::System.Nullable<int> idCategoria) {
+        public virtual DSInventario.MarcaDataTable GetDataBy3(global::System.Nullable<int> idCategoria) {
             this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((idCategoria.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((int)(idCategoria.Value));

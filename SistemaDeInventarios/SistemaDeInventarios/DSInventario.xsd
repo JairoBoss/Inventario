@@ -110,7 +110,7 @@ SELECT Id, Nombre, Descripcion FROM Categoria WHERE (Id = @Id)</CommandText>
               <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="BD_InvetarioConnectionString (Settings)" DbObjectName="BD_Invetario.dbo.ActualizarCategoria" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="ActualizarCategoria" Modifier="Public" Name="ActualizarCategoria" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="ActualizarCategoria">
+              <DbSource ConnectionRef="BD_InvetarioConnectionString (Settings)" DbObjectName="BD_Invetario.dbo.ActualizarCategoria" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="ActualizarCategoria" Modifier="Public" Name="ActualizarCategoria" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="ActualizarCategoria">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.ActualizarCategoria</CommandText>
@@ -123,7 +123,7 @@ SELECT Id, Nombre, Descripcion FROM Categoria WHERE (Id = @Id)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="BD_InvetarioConnectionString (Settings)" DbObjectName="BD_Invetario.dbo.AgregarCategoria" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="AgregarCategoria" Modifier="Public" Name="AgregarCategoria" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="AgregarCategoria">
+              <DbSource ConnectionRef="BD_InvetarioConnectionString (Settings)" DbObjectName="BD_Invetario.dbo.AgregarCategoria" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="AgregarCategoria" Modifier="Public" Name="AgregarCategoria" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="AgregarCategoria">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.AgregarCategoria</CommandText>
@@ -135,7 +135,7 @@ SELECT Id, Nombre, Descripcion FROM Categoria WHERE (Id = @Id)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="BD_InvetarioConnectionString (Settings)" DbObjectName="BD_Invetario.dbo.EliminarCategoria" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="EliminarCategoria" Modifier="Public" Name="EliminarCategoria" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="EliminarCategoria">
+              <DbSource ConnectionRef="BD_InvetarioConnectionString (Settings)" DbObjectName="BD_Invetario.dbo.EliminarCategoria" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="EliminarCategoria" Modifier="Public" Name="EliminarCategoria" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="EliminarCategoria">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.EliminarCategoria</CommandText>
@@ -200,7 +200,7 @@ SELECT Id, Marca, Categoria FROM Marca WHERE (Id = @Id)</CommandText>
               <Mapping SourceColumn="Categoria" DataSetColumn="Categoria" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="BD_InvetarioConnectionString (Settings)" DbObjectName="BD_Invetario.dbo.ActualizarNombreMarca" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="ActualizarNombreMarca" Modifier="Public" Name="ActualizarNombreMarca" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ActualizarNombreMarca">
+              <DbSource ConnectionRef="BD_InvetarioConnectionString (Settings)" DbObjectName="BD_Invetario.dbo.ActualizarNombreMarca" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="ActualizarNombreMarca" Modifier="Public" Name="ActualizarNombreMarca" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="ActualizarNombreMarca">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.ActualizarNombreMarca</CommandText>
@@ -235,7 +235,7 @@ SELECT Id, Marca, Categoria FROM Marca WHERE (Id = @Id)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="BD_InvetarioConnectionString (Settings)" DbObjectName="BD_Invetario.dbo.ObtenerProductosCategoria" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="GetMarcas" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="GetMarcas" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="GetMarcas">
+              <DbSource ConnectionRef="BD_InvetarioConnectionString (Settings)" DbObjectName="BD_Invetario.dbo.ObtenerProductosCategoria" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="GetMarcas" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy3" GeneratorSourceName="GetMarcas" GetMethodModifier="Public" GetMethodName="GetDataBy3" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="GetMarcas">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.ObtenerProductosCategoria</CommandText>
@@ -283,7 +283,7 @@ FROM            Productos INNER JOIN
   <xs:element name="DSInventario" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSInventario" msprop:Generator_UserDSName="DSInventario">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Productos" msprop:Generator_TableClassName="ProductosDataTable" msprop:Generator_TableVarName="tableProductos" msprop:Generator_TablePropName="Productos" msprop:Generator_RowDeletingName="ProductosRowDeleting" msprop:Generator_RowChangingName="ProductosRowChanging" msprop:Generator_RowEvHandlerName="ProductosRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductosRowDeleted" msprop:Generator_UserTableName="Productos" msprop:Generator_RowChangedName="ProductosRowChanged" msprop:Generator_RowEvArgName="ProductosRowChangeEvent" msprop:Generator_RowClassName="ProductosRow">
+        <xs:element name="Productos" msprop:Generator_TableClassName="ProductosDataTable" msprop:Generator_TableVarName="tableProductos" msprop:Generator_RowChangedName="ProductosRowChanged" msprop:Generator_TablePropName="Productos" msprop:Generator_RowDeletingName="ProductosRowDeleting" msprop:Generator_RowChangingName="ProductosRowChanging" msprop:Generator_RowEvHandlerName="ProductosRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductosRowDeleted" msprop:Generator_RowClassName="ProductosRow" msprop:Generator_UserTableName="Productos" msprop:Generator_RowEvArgName="ProductosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -328,7 +328,7 @@ FROM            Productos INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Categoria" msprop:Generator_TableClassName="CategoriaDataTable" msprop:Generator_TableVarName="tableCategoria" msprop:Generator_TablePropName="Categoria" msprop:Generator_RowDeletingName="CategoriaRowDeleting" msprop:Generator_RowChangingName="CategoriaRowChanging" msprop:Generator_RowEvHandlerName="CategoriaRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoriaRowDeleted" msprop:Generator_UserTableName="Categoria" msprop:Generator_RowChangedName="CategoriaRowChanged" msprop:Generator_RowEvArgName="CategoriaRowChangeEvent" msprop:Generator_RowClassName="CategoriaRow">
+        <xs:element name="Categoria" msprop:Generator_TableClassName="CategoriaDataTable" msprop:Generator_TableVarName="tableCategoria" msprop:Generator_RowChangedName="CategoriaRowChanged" msprop:Generator_TablePropName="Categoria" msprop:Generator_RowDeletingName="CategoriaRowDeleting" msprop:Generator_RowChangingName="CategoriaRowChanging" msprop:Generator_RowEvHandlerName="CategoriaRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoriaRowDeleted" msprop:Generator_RowClassName="CategoriaRow" msprop:Generator_UserTableName="Categoria" msprop:Generator_RowEvArgName="CategoriaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -349,7 +349,7 @@ FROM            Productos INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Marca" msprop:Generator_TableClassName="MarcaDataTable" msprop:Generator_TableVarName="tableMarca" msprop:Generator_TablePropName="Marca" msprop:Generator_RowDeletingName="MarcaRowDeleting" msprop:Generator_RowChangingName="MarcaRowChanging" msprop:Generator_RowEvHandlerName="MarcaRowChangeEventHandler" msprop:Generator_RowDeletedName="MarcaRowDeleted" msprop:Generator_UserTableName="Marca" msprop:Generator_RowChangedName="MarcaRowChanged" msprop:Generator_RowEvArgName="MarcaRowChangeEvent" msprop:Generator_RowClassName="MarcaRow">
+        <xs:element name="Marca" msprop:Generator_TableClassName="MarcaDataTable" msprop:Generator_TableVarName="tableMarca" msprop:Generator_RowChangedName="MarcaRowChanged" msprop:Generator_TablePropName="Marca" msprop:Generator_RowDeletingName="MarcaRowDeleting" msprop:Generator_RowChangingName="MarcaRowChanging" msprop:Generator_RowEvHandlerName="MarcaRowChangeEventHandler" msprop:Generator_RowDeletedName="MarcaRowDeleted" msprop:Generator_RowClassName="MarcaRow" msprop:Generator_UserTableName="Marca" msprop:Generator_RowEvArgName="MarcaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -364,7 +364,7 @@ FROM            Productos INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Productos1" msprop:Generator_TableClassName="Productos1DataTable" msprop:Generator_TableVarName="tableProductos1" msprop:Generator_TablePropName="Productos1" msprop:Generator_RowDeletingName="Productos1RowDeleting" msprop:Generator_RowChangingName="Productos1RowChanging" msprop:Generator_RowEvHandlerName="Productos1RowChangeEventHandler" msprop:Generator_RowDeletedName="Productos1RowDeleted" msprop:Generator_UserTableName="Productos1" msprop:Generator_RowChangedName="Productos1RowChanged" msprop:Generator_RowEvArgName="Productos1RowChangeEvent" msprop:Generator_RowClassName="Productos1Row">
+        <xs:element name="Productos1" msprop:Generator_TableClassName="Productos1DataTable" msprop:Generator_TableVarName="tableProductos1" msprop:Generator_RowChangedName="Productos1RowChanged" msprop:Generator_TablePropName="Productos1" msprop:Generator_RowDeletingName="Productos1RowDeleting" msprop:Generator_RowChangingName="Productos1RowChanging" msprop:Generator_RowEvHandlerName="Productos1RowChangeEventHandler" msprop:Generator_RowDeletedName="Productos1RowDeleted" msprop:Generator_RowClassName="Productos1Row" msprop:Generator_UserTableName="Productos1" msprop:Generator_RowEvArgName="Productos1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -430,8 +430,8 @@ FROM            Productos INNER JOIN
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Marca_Categoria" msdata:parent="Categoria" msdata:child="Marca" msdata:parentkey="Id" msdata:childkey="Categoria" msprop:Generator_UserChildTable="Marca" msprop:Generator_ChildPropName="GetMarcaRows" msprop:Generator_UserRelationName="FK_Marca_Categoria" msprop:Generator_ParentPropName="CategoriaRow" msprop:Generator_RelationVarName="relationFK_Marca_Categoria" msprop:Generator_UserParentTable="Categoria" />
-      <msdata:Relationship name="FK_Marca_Categoria1" msdata:parent="Productos1" msdata:child="Marca" msdata:parentkey="Id" msdata:childkey="Categoria" msprop:Generator_UserChildTable="Marca" msprop:Generator_ChildPropName="GetMarcaRows" msprop:Generator_UserRelationName="FK_Marca_Categoria1" msprop:Generator_RelationVarName="relationFK_Marca_Categoria1" msprop:Generator_UserParentTable="Productos1" msprop:Generator_ParentPropName="Productos1Row" />
+      <msdata:Relationship name="FK_Marca_Categoria" msdata:parent="Categoria" msdata:child="Marca" msdata:parentkey="Id" msdata:childkey="Categoria" msprop:Generator_UserChildTable="Marca" msprop:Generator_ChildPropName="GetMarcaRows" msprop:Generator_UserRelationName="FK_Marca_Categoria" msprop:Generator_RelationVarName="relationFK_Marca_Categoria" msprop:Generator_UserParentTable="Categoria" msprop:Generator_ParentPropName="CategoriaRow" />
+      <msdata:Relationship name="FK_Marca_Categoria1" msdata:parent="Productos1" msdata:child="Marca" msdata:parentkey="Id" msdata:childkey="Categoria" msprop:Generator_UserChildTable="Marca" msprop:Generator_ChildPropName="GetMarcaRows" msprop:Generator_UserRelationName="FK_Marca_Categoria1" msprop:Generator_ParentPropName="Productos1Row" msprop:Generator_RelationVarName="relationFK_Marca_Categoria1" msprop:Generator_UserParentTable="Productos1" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

@@ -121,5 +121,10 @@ namespace SistemaDeInventarios
         {
             abrirFormEnPanel(new Categorias());
         }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            abrirFormEnPanel(new Exportar());
+        }
     }
 }
