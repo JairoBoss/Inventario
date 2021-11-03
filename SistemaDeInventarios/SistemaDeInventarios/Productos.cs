@@ -16,9 +16,11 @@ namespace SistemaDeInventarios
     {
         private String ruta;
         private string cadenita = Properties.Settings.Default.BD_InvetarioConnectionString;
-        public Productos()
+        private string nombreUser;
+        public Productos(string nombre)
         {
             InitializeComponent();
+            this.nombreUser = nombre;
         }
 
         private void Productos_Load(object sender, EventArgs e)
@@ -105,6 +107,14 @@ namespace SistemaDeInventarios
                         comando.Parameters.Add("@p7", SqlDbType.DateTime).Value = diaDeRegistro;
                         comando.Parameters.Add("@p8", SqlDbType.VarChar).Value = rutaDeLaImagen;
                         comando.ExecuteNonQuery();
+
+                        SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                            "values (@User, @Accion, @fecha)", conexion);
+                        nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+                        nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Agrego un nuevo producto: "+nombreDelProducto;
+                        nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now; 
+                        nuevoComando.ExecuteNonQuery();
+
                         conexion.Close();
                     }
                     catch (Exception e1)
@@ -129,6 +139,14 @@ namespace SistemaDeInventarios
                         comando.Parameters.Add("@p6", SqlDbType.VarChar).Value = descripcion;
                         comando.Parameters.Add("@p7", SqlDbType.DateTime).Value = diaDeRegistro;
                         comando.ExecuteNonQuery();
+
+                        SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                            "values (@User, @Accion, @fecha)", conexion);
+                        nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+                        nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Agrego un nuevo producto: " + nombreDelProducto;
+                        nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
+                        nuevoComando.ExecuteNonQuery();
+
                         conexion.Close();
                         
                     }

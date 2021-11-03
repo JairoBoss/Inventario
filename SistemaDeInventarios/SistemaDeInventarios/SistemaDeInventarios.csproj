@@ -496,6 +496,7 @@
     <None Include="Resources\export.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\cantidad.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

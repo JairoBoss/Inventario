@@ -33,8 +33,8 @@ namespace SistemaDeInventarios
             this.panelContenedor.Controls.Add(fh);
             fh.Show();
         }
-      
 
+        private string nombre;
         private void Main_Load(object sender, EventArgs e)
         {
 
@@ -44,7 +44,7 @@ namespace SistemaDeInventarios
 
             login.ShowDialog();
 
-            string nombre = login.getUserName();
+            nombre = login.getUserName();
 
             
             this.label2.Text = "¡Hola " + nombre + "!";
@@ -109,17 +109,17 @@ namespace SistemaDeInventarios
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            abrirFormEnPanel(new Productos());
+            abrirFormEnPanel(new Productos(nombre));
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            abrirFormEnPanel(new ListaProductos());
+            abrirFormEnPanel(new ListaProductos(nombre));
         }
 
         private void categoriaButton_Click(object sender, EventArgs e)
         {
-            abrirFormEnPanel(new Categorias());
+            abrirFormEnPanel(new Categorias(nombre));
         }
 
         private void pictureBox7_Click(object sender, EventArgs e)

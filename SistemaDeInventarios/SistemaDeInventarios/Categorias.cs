@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,11 @@ namespace SistemaDeInventarios
 {
     public partial class Categorias : Form
     {
-        public Categorias()
+        private string nombreUser;
+        private string cadenita = Properties.Settings.Default.BD_InvetarioConnectionString;
+        public Categorias(string nombre)
         {
+            this.nombreUser = nombre;
             InitializeComponent();
         }
 
@@ -40,6 +44,7 @@ namespace SistemaDeInventarios
         {
             try
             {
+
                 if (txtCategoria.Text == "" && txtDescripcion.Text == "")
                 {
                     Error error = new Error();
@@ -47,12 +52,23 @@ namespace SistemaDeInventarios
                 }
                 else
                 {
-                    
 
+                    
+                    
                     String categoria = this.txtCategoria.Text;
                     String descripcion = this.txtDescripcion.Text;
                     this.categoriaTableAdapter.AgregarCategoria(categoria, descripcion);
                     this.categoriaTableAdapter.Fill(this.dSInventario.Categoria); //Actualiza
+
+                    SqlConnection conexion = new SqlConnection(cadenita);
+                    conexion.Open();
+                    SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                            "values (@User, @Accion, @fecha)", conexion);
+                    nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+                    nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Agrego una nueva categoria: " + categoria;
+                    nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
+                    nuevoComando.ExecuteNonQuery();
+                    conexion.Close();
                 }
 
 
@@ -119,6 +135,28 @@ namespace SistemaDeInventarios
 
         private void pictureBox4_Click(object sender, EventArgs e) //Eliminar
         {
+
+            SqlConnection conexion = new SqlConnection(cadenita);
+            conexion.Open();
+            SqlCommand obtenerMarca = new SqlCommand("select nombre from categoria where id = @id", conexion);
+            obtenerMarca.Parameters.Add("@id", SqlDbType.Int).Value = idSeleccionado;
+            SqlDataReader lector = obtenerMarca.ExecuteReader();
+            string marca = "";
+            while (lector.Read())
+            {
+                marca = lector["nombre"].ToString();
+            }
+            conexion.Close();
+            conexion.Open();
+
+            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                    "values (@User, @Accion, @fecha)", conexion);
+            nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+            nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Elimino una categoria: " + marca;
+            nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
+            nuevoComando.ExecuteNonQuery();
+            conexion.Close();
+
             this.categoriaTableAdapter.EliminarCategoria(idSeleccionado);
             this.categoriaTableAdapter.Fill(this.dSInventario.Categoria); //Actualiza
             cleanCategoria();
@@ -128,6 +166,30 @@ namespace SistemaDeInventarios
         {
             String nombreCategoria = txtCategoria.Text;
             String descripcionCategoria = txtDescripcion.Text;
+
+            SqlConnection conexion = new SqlConnection(cadenita);
+            conexion.Open();
+            SqlCommand obtenerMarca = new SqlCommand("select nombre, descripcion from categoria where id = @id", conexion);
+            obtenerMarca.Parameters.Add("@id", SqlDbType.Int).Value = idSeleccionado;
+            SqlDataReader lector = obtenerMarca.ExecuteReader();
+            string marca = "";
+            string descripcion = "";
+            while (lector.Read())
+            {
+                marca = lector["nombre"].ToString();
+                descripcion = lector["descripcion"].ToString();
+            }
+            conexion.Close();
+            conexion.Open();
+
+            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                    "values (@User, @Accion, @fecha)", conexion);
+            nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+            nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Actualizo una categoria: " + marca +" -> "+ nombreCategoria +". Descripcion: " + descripcion +" ->" + descripcionCategoria;
+            nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
+            nuevoComando.ExecuteNonQuery();
+            conexion.Close();
+            
             this.categoriaTableAdapter.ActualizarCategoria(idSeleccionado, nombreCategoria, descripcionCategoria);
             this.categoriaTableAdapter.Fill(this.dSInventario.Categoria); //Actualiza
             cleanCategoria();
@@ -142,6 +204,40 @@ namespace SistemaDeInventarios
         {
 
             String nuevoNombre = txtMarca.Text;
+
+            SqlConnection conexion = new SqlConnection(cadenita);
+            conexion.Open();
+            SqlCommand obtenerMarca = new SqlCommand("select nombre from categoria where id = @id", conexion);
+            obtenerMarca.Parameters.Add("@id", SqlDbType.Int).Value = idSeleccionado;
+            SqlDataReader lector = obtenerMarca.ExecuteReader();
+            string categoria = "";
+            while (lector.Read())
+            {
+                categoria = lector["nombre"].ToString();
+            }
+            conexion.Close();
+
+            conexion.Open();
+            SqlCommand obtenerMarcaG = new SqlCommand("select marca from marca where id = @id", conexion);
+            obtenerMarcaG.Parameters.Add("@id", SqlDbType.Int).Value = idMarcaSleccionado;
+            SqlDataReader lector2 = obtenerMarcaG.ExecuteReader();
+            string marca = "";
+            while (lector2.Read())
+            {
+                marca = lector2["marca"].ToString();
+            }
+            conexion.Close();
+
+            conexion.Open();
+
+            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                    "values (@User, @Accion, @fecha)", conexion);
+            nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+            nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Actualizo el nombre de una marca: " + marca + " -> "+ nuevoNombre +" de la categoria: " + categoria;
+            nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
+            nuevoComando.ExecuteNonQuery();
+            conexion.Close();
+
             this.marcaTableAdapter.ActualizarNombreMarca(idMarcaSleccionado, nuevoNombre);
             this.marcaTableAdapter.Fill(this.dSInventario.Marca); //Actualiza
             cleanMarca();
@@ -157,7 +253,29 @@ namespace SistemaDeInventarios
         private void btnAgregarMarca_Click(object sender, EventArgs e)
         {
             //idSeleccionado            
-            String marca = txtMarca.Text;
+            String marca = txtMarca.Text;         
+
+            SqlConnection conexion = new SqlConnection(cadenita);
+            conexion.Open();
+            SqlCommand obtenerMarca = new SqlCommand("select nombre from categoria where id = @id", conexion);
+            obtenerMarca.Parameters.Add("@id", SqlDbType.Int).Value = idSeleccionado;
+            SqlDataReader lector = obtenerMarca.ExecuteReader();
+            string categoria = "";
+            while (lector.Read())
+            {
+                categoria = lector["nombre"].ToString();
+            }
+            conexion.Close();
+            conexion.Open();
+
+            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                    "values (@User, @Accion, @fecha)", conexion);
+            nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+            nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Agrego una nueva marca: " + marca +" a la categoria: " + categoria;
+            nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
+            nuevoComando.ExecuteNonQuery();
+            conexion.Close();
+
             this.marcaTableAdapter.AgregarMarca(idSeleccionado, marca);
             this.marcaTableAdapter.Fill(this.dSInventario.Marca); //Actualiza
             cleanMarca();
@@ -185,7 +303,42 @@ namespace SistemaDeInventarios
         }
 
         private void btnEliminarMarca_Click(object sender, EventArgs e)
-        {            
+        {
+
+            SqlConnection conexion = new SqlConnection(cadenita);
+            conexion.Open();
+            SqlCommand obtenerMarca = new SqlCommand("select nombre from categoria where id = @id", conexion);
+            obtenerMarca.Parameters.Add("@id", SqlDbType.Int).Value = idSeleccionado;
+            SqlDataReader lector = obtenerMarca.ExecuteReader();
+            string categoria = "";
+            while (lector.Read())
+            {
+                categoria = lector["nombre"].ToString();
+            }
+            conexion.Close();
+
+            conexion.Open();
+            SqlCommand obtenerMarcaG = new SqlCommand("select marca from marca where id = @id", conexion);
+            obtenerMarcaG.Parameters.Add("@id", SqlDbType.Int).Value = idSeleccionado;
+            SqlDataReader lector2 = obtenerMarcaG.ExecuteReader();
+            string marca = "";
+            while (lector2.Read())
+            {
+                marca = lector2["marca"].ToString();
+            }
+            conexion.Close();
+
+            conexion.Open();
+
+            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                    "values (@User, @Accion, @fecha)", conexion);
+            nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+            nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Elimino una marca: " + marca + " de la categoria: " + categoria;
+            nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
+            nuevoComando.ExecuteNonQuery();
+            conexion.Close();
+
+
             this.marcaTableAdapter.EliminarMarca(idMarcaSleccionado);
             this.marcaTableAdapter.Fill(this.dSInventario.Marca); //Actualiza
             //checar si depende de un artiuclo

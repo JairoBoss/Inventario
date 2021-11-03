@@ -13,9 +13,11 @@ namespace SistemaDeInventarios
 {   
     public partial class ListaProductos : Form
     {
-        private string cadenita = Properties.Settings.Default.BD_InvetarioConnectionString;
-        public ListaProductos()
+        private string cadenita = Properties.Settings.Default.BD_InvetarioConnectionString;        
+        private string nombre;
+        public ListaProductos(String nombre)
         {
+            this.nombre = nombre;
             InitializeComponent();
         }
 
@@ -68,101 +70,180 @@ namespace SistemaDeInventarios
         private void pictureBox1_Click(object sender, EventArgs e) //Agregar
         {
 
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (txtCantidad.Text != "")
             {
-                foreach (DataGridViewRow fila in dataGridView1.SelectedRows)
+                if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    int idProducto = Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString());
-                    int cantidadProducto = Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[4].Value.ToString());
-                    cantidadProducto++;
+                    foreach (DataGridViewRow fila in dataGridView1.SelectedRows)
+                    {
+                        int idProducto = Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString());
+                        int cantidadProducto = Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[4].Value.ToString());
+                        
 
-                    //Sumamos uno
-                    this.productosTableAdapter.ActualizarCantidad(cantidadProducto, idProducto); //Realiza la operacion
-                    this.productosTableAdapter.Fill(this.dSInventario.Productos); //Actualiza
-
-                }
-
+                        int cantidad = Convert.ToInt16(this.txtCantidad.Text);
+                        cantidadProducto += cantidad;
 
 
-                /*if (itemSeleccionado)
-                {
-
-                    itemSeleccionado = false;
-                    idProducto = 0;
-                    foreach (ListViewItem lv in listView1.SelectedItems)
-                    {                    
-                        int id = Convert.ToInt32(lv.Text);
 
                         SqlConnection conexion = new SqlConnection(cadenita);
-
-
-                        try
+                        conexion.Open();
+                        SqlCommand obtenerMarca = new SqlCommand("select nombreDelProducto from productos where id = @id", conexion);
+                        obtenerMarca.Parameters.Add("@id", SqlDbType.Int).Value = idProducto;
+                        SqlDataReader lector = obtenerMarca.ExecuteReader();
+                        string producto = "";
+                        while (lector.Read())
                         {
-                            conexion.Open();
+                            producto = lector["nombreDelProducto"].ToString();
+                        }
+                        conexion.Close();
 
-                            SqlCommand comando = new SqlCommand("select cantidad from Productos where id = @p1 ", conexion);
-                            comando.Parameters.Add("@p1", SqlDbType.Int).Value = id;
-                            SqlDataReader lector = comando.ExecuteReader();
-                            int cantidadProducto = 0;
-                            while (lector.Read())
+                        conexion.Open();
+                        SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                            "values (@User, @Accion, @fecha)", conexion);
+                        nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombre;
+                        nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Agrego " + cantidad + " " + producto;
+                        nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
+                        nuevoComando.ExecuteNonQuery();
+                        conexion.Close();
+
+
+
+                        txtCantidad.Clear();
+
+                        //Sumamos uno
+                        this.productosTableAdapter.ActualizarCantidad(cantidadProducto, idProducto); //Realiza la operacion
+                        this.productosTableAdapter.Fill(this.dSInventario.Productos); //Actualiza
+
+                    }
+
+
+
+                    /*if (itemSeleccionado)
+                    {
+
+                        itemSeleccionado = false;
+                        idProducto = 0;
+                        foreach (ListViewItem lv in listView1.SelectedItems)
+                        {                    
+                            int id = Convert.ToInt32(lv.Text);
+
+                            SqlConnection conexion = new SqlConnection(cadenita);
+
+
+                            try
                             {
-                                cantidadProducto = Convert.ToInt32(lector["cantidad"].ToString());
+                                conexion.Open();
+
+                                SqlCommand comando = new SqlCommand("select cantidad from Productos where id = @p1 ", conexion);
+                                comando.Parameters.Add("@p1", SqlDbType.Int).Value = id;
+                                SqlDataReader lector = comando.ExecuteReader();
+                                int cantidadProducto = 0;
+                                while (lector.Read())
+                                {
+                                    cantidadProducto = Convert.ToInt32(lector["cantidad"].ToString());
+                                }
+                                conexion.Close();
+
+                                cantidadProducto++;
+
+                                conexion.Open();
+
+                                SqlCommand comando1 = new SqlCommand("update Productos set cantidad = @p2 where id = @id", conexion);                        
+                                comando1.Parameters.AddWithValue("@id", SqlDbType.Int).Value = id;
+                                comando1.Parameters.AddWithValue("@p2", SqlDbType.Int).Value = cantidadProducto;
+                                SqlDataReader lector1 = comando1.ExecuteReader();                       
+                                conexion.Close();   
+
                             }
-                            conexion.Close();
+                            catch (Exception e1)
+                            {
+                                MessageBox.Show(e1.Message);
+                            }
+                            actualizarItems();
 
-                            cantidadProducto++;
-
-                            conexion.Open();
-
-                            SqlCommand comando1 = new SqlCommand("update Productos set cantidad = @p2 where id = @id", conexion);                        
-                            comando1.Parameters.AddWithValue("@id", SqlDbType.Int).Value = id;
-                            comando1.Parameters.AddWithValue("@p2", SqlDbType.Int).Value = cantidadProducto;
-                            SqlDataReader lector1 = comando1.ExecuteReader();                       
-                            conexion.Close();   
-
-                        }
-                        catch (Exception e1)
-                        {
-                            MessageBox.Show(e1.Message);
-                        }
-                        actualizarItems();
-
-                    }                    
+                        }                    
+                    }
+                    else
+                    {
+                        Error error = new Error();
+                        error.ShowDialog();
+                    }*/
                 }
-                else
-                {
-                    Error error = new Error();
-                    error.ShowDialog();
-                }*/
+            }
+            else
+            {
+                MessageBox.Show("ERROR");
             }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e) //Eliminar
         {
-            if(dataGridView1.SelectedRows.Count > 0)
+            if(this.txtCantidad.Text != "")
             {
-                foreach(DataGridViewRow fila in dataGridView1.SelectedRows)
+                if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    int idProducto = Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString());
-                    int cantidadProducto = Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[4].Value.ToString());
-                    cantidadProducto--;
-
-                    if(cantidadProducto > 0)
+                    foreach (DataGridViewRow fila in dataGridView1.SelectedRows)
                     {
-                        //Restamos uno
-                        this.productosTableAdapter.ActualizarCantidad(cantidadProducto, idProducto); //Realiza la operacion
-                        this.productosTableAdapter.Fill(this.dSInventario.Productos); //Actualiza
-                        MessageBox.Show("ID: "+idProducto+", Cantidad: "+ cantidadProducto  );
-                    }
-                    else
-                    {
-                        //Lo eliminamos de la tabla
-                        this.productosTableAdapter.EliminarProducto(idProducto); //Realiza la operacion
-                        this.productosTableAdapter.Fill(this.dSInventario.Productos); //Actualiza
-                    }
+                        int idProducto = Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString());
+                        int cantidadProducto = Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[4].Value.ToString());
+                        
 
-                    
+                        int cantidad = Convert.ToInt16(this.txtCantidad.Text);
+                        
+
+                        txtCantidad.Clear();
+
+                        if(cantidad <= cantidadProducto)
+                        {
+                            cantidadProducto -= cantidad;
+                            if (cantidadProducto > 0)
+                            {
+                                //Restamos uno
+                                this.productosTableAdapter.ActualizarCantidad(cantidadProducto, idProducto); //Realiza la operacion
+                                this.productosTableAdapter.Fill(this.dSInventario.Productos); //Actualiza                                
+                            }
+                            else
+                            {
+                                //Lo eliminamos de la tabla
+                                this.productosTableAdapter.EliminarProducto(idProducto); //Realiza la operacion
+                                this.productosTableAdapter.Fill(this.dSInventario.Productos); //Actualiza
+                            }
+
+                            SqlConnection conexion = new SqlConnection(cadenita);
+                            conexion.Open();
+                            SqlCommand obtenerMarca = new SqlCommand("select nombreDelProducto from productos where id = @id", conexion);
+                            obtenerMarca.Parameters.Add("@id", SqlDbType.Int).Value = idProducto;
+                            SqlDataReader lector = obtenerMarca.ExecuteReader();
+                            string producto = "";
+                            while (lector.Read())
+                            {
+                                producto = lector["nombreDelProducto"].ToString();
+                            }
+                            conexion.Close();
+
+                            conexion.Open();
+                            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                                "values (@User, @Accion, @fecha)", conexion);
+                            nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombre;
+                            nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Elimino " + cantidad + " " + producto;
+                            nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
+                            nuevoComando.ExecuteNonQuery();
+                            conexion.Close();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("ERROR NO PUEDES ELIMINAR MAS DE LO QUE HAY XD, cantidad "+ cantidadProducto);
+                            
+                        }
+
+
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Error");
             }
             
             
@@ -253,6 +334,19 @@ namespace SistemaDeInventarios
             catch (Exception e1)
             {
 
+            }
+        }
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 48 && e.KeyChar <= 57) || (e.KeyChar == 46 || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+
+            }
+            else
+            {
+                e.Handled = true;
+                return;
             }
         }
 

@@ -273,6 +273,16 @@ namespace SistemaDeInventarios.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cantidad {
+            get {
+                object obj = ResourceManager.GetObject("cantidad", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Categoria {
             get {
                 object obj = ResourceManager.GetObject("Categoria", resourceCulture);
