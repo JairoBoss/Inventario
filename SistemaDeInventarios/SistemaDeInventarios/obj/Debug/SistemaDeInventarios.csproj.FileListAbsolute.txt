@@ -115,3 +115,4 @@ C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\RdlCompile.cache
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\RdlCompile.compiled
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.ExportarCategoria.resources
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.Usuarios.resources

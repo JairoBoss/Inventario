@@ -473,6 +473,16 @@ namespace SistemaDeInventarios.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap group {
+            get {
+                object obj = ResourceManager.GetObject("group", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Group_15 {
             get {
                 object obj = ResourceManager.GetObject("Group 15", resourceCulture);
@@ -726,6 +736,36 @@ namespace SistemaDeInventarios.Properties {
         internal static System.Drawing.Bitmap user2 {
             get {
                 object obj = ResourceManager.GetObject("user2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user3 {
+            get {
+                object obj = ResourceManager.GetObject("user3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Usuarios {
+            get {
+                object obj = ResourceManager.GetObject("Usuarios", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UsuariosBTN {
+            get {
+                object obj = ResourceManager.GetObject("UsuariosBTN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
