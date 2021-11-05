@@ -129,7 +129,7 @@ namespace SistemaDeInventarios
 
         private void pictureBox8_Click(object sender, EventArgs e)
         {
-            abrirFormEnPanel(new Usuarios());
+            abrirFormEnPanel(new Usuarios(nombre));
         }
     }
 }

@@ -38,20 +38,20 @@ namespace SistemaDeInventarios
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dSInventario = new SistemaDeInventarios.DSInventario();
-            this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usuariosTableAdapter = new SistemaDeInventarios.DSInventarioTableAdapters.UsuariosTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dSInventario = new SistemaDeInventarios.DSInventario();
+            this.usuariosTableAdapter = new SistemaDeInventarios.DSInventarioTableAdapters.UsuariosTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.btnReporteGeneral)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnReporteIndividual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAztualizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSInventario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSInventario)).BeginInit();
             this.SuspendLayout();
             // 
             // btnReporteGeneral
@@ -100,12 +100,13 @@ namespace SistemaDeInventarios
             // btnAztualizar
             // 
             this.btnAztualizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAztualizar.Image = global::SistemaDeInventarios.Properties.Resources.AceptarButton2;
+            this.btnAztualizar.Image = global::SistemaDeInventarios.Properties.Resources.Actualizar;
             this.btnAztualizar.Location = new System.Drawing.Point(783, 106);
             this.btnAztualizar.Name = "btnAztualizar";
             this.btnAztualizar.Size = new System.Drawing.Size(118, 42);
             this.btnAztualizar.TabIndex = 4;
             this.btnAztualizar.TabStop = false;
+            this.btnAztualizar.Click += new System.EventHandler(this.btnAztualizar_Click);
             // 
             // txtUsuario
             // 
@@ -128,6 +129,8 @@ namespace SistemaDeInventarios
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -136,23 +139,13 @@ namespace SistemaDeInventarios
             this.passwordDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.usuariosBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(13, 165);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(888, 304);
             this.dataGridView1.TabIndex = 8;
-            // 
-            // dSInventario
-            // 
-            this.dSInventario.DataSetName = "DSInventario";
-            this.dSInventario.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usuariosBindingSource
-            // 
-            this.usuariosBindingSource.DataMember = "Usuarios";
-            this.usuariosBindingSource.DataSource = this.dSInventario;
-            // 
-            // usuariosTableAdapter
-            // 
-            this.usuariosTableAdapter.ClearBeforeFill = true;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -177,6 +170,20 @@ namespace SistemaDeInventarios
             this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
             this.passwordDataGridViewTextBoxColumn.Width = 350;
             // 
+            // usuariosBindingSource
+            // 
+            this.usuariosBindingSource.DataMember = "Usuarios";
+            this.usuariosBindingSource.DataSource = this.dSInventario;
+            // 
+            // dSInventario
+            // 
+            this.dSInventario.DataSetName = "DSInventario";
+            this.dSInventario.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usuariosTableAdapter
+            // 
+            this.usuariosTableAdapter.ClearBeforeFill = true;
+            // 
             // Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,8 +207,8 @@ namespace SistemaDeInventarios
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAztualizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSInventario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSInventario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
