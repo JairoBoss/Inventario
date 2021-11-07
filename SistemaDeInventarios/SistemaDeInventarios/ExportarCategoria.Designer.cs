@@ -31,13 +31,24 @@ namespace SistemaDeInventarios
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.BD_InvetarioDataSet2 = new SistemaDeInventarios.BD_InvetarioDataSet2();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExportarCategoria));
             this.categoriaMarcaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.BD_InvetarioDataSet2 = new SistemaDeInventarios.BD_InvetarioDataSet2();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.categoriaMarcaTableAdapter = new SistemaDeInventarios.BD_InvetarioDataSet2TableAdapters.categoriaMarcaTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.BD_InvetarioDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriaMarcaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BD_InvetarioDataSet2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // categoriaMarcaBindingSource
+            // 
+            this.categoriaMarcaBindingSource.DataMember = "categoriaMarca";
+            this.categoriaMarcaBindingSource.DataSource = this.BD_InvetarioDataSet2;
+            // 
+            // BD_InvetarioDataSet2
+            // 
+            this.BD_InvetarioDataSet2.DataSetName = "BD_InvetarioDataSet2";
+            this.BD_InvetarioDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -52,16 +63,6 @@ namespace SistemaDeInventarios
             this.reportViewer1.Size = new System.Drawing.Size(922, 611);
             this.reportViewer1.TabIndex = 0;
             // 
-            // BD_InvetarioDataSet2
-            // 
-            this.BD_InvetarioDataSet2.DataSetName = "BD_InvetarioDataSet2";
-            this.BD_InvetarioDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // categoriaMarcaBindingSource
-            // 
-            this.categoriaMarcaBindingSource.DataMember = "categoriaMarca";
-            this.categoriaMarcaBindingSource.DataSource = this.BD_InvetarioDataSet2;
-            // 
             // categoriaMarcaTableAdapter
             // 
             this.categoriaMarcaTableAdapter.ClearBeforeFill = true;
@@ -72,13 +73,14 @@ namespace SistemaDeInventarios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(922, 611);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "ExportarCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ExportarCategoria";
+            this.Text = "Exportar Categoria";
             this.Load += new System.EventHandler(this.ExportarCategoria_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.BD_InvetarioDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriaMarcaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BD_InvetarioDataSet2)).EndInit();
             this.ResumeLayout(false);
 
         }

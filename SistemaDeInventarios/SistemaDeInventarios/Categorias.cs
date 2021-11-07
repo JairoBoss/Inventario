@@ -15,10 +15,23 @@ namespace SistemaDeInventarios
     {
         private string nombreUser;
         private string cadenita = Properties.Settings.Default.BD_InvetarioConnectionString;
+        private int idUsuario = -1;
         public Categorias(string nombre)
         {
             this.nombreUser = nombre;
             InitializeComponent();
+
+            SqlConnection conexion = new SqlConnection(cadenita);
+            conexion.Open();
+            SqlCommand obtenerIdUsuario = new SqlCommand("select id from Usuarios where Usuario = @nombre", conexion);
+            obtenerIdUsuario.Parameters.Add("@nombre", SqlDbType.VarChar).Value = nombreUser;
+            SqlDataReader lector = obtenerIdUsuario.ExecuteReader();
+            while (lector.Read())
+            {
+                idUsuario = Convert.ToInt32(lector["id"]);
+            }
+            conexion.Close();
+
         }
 
         private void Categorias_Load(object sender, EventArgs e)
@@ -62,9 +75,9 @@ namespace SistemaDeInventarios
 
                     SqlConnection conexion = new SqlConnection(cadenita);
                     conexion.Open();
-                    SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                    SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones (IdUsuario, Accion, fecha) " +
                             "values (@User, @Accion, @fecha)", conexion);
-                    nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+                    nuevoComando.Parameters.Add("@User", SqlDbType.Int).Value = idUsuario;
                     nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Agrego una nueva categoria: " + categoria;
                     nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
                     nuevoComando.ExecuteNonQuery();
@@ -149,9 +162,9 @@ namespace SistemaDeInventarios
             conexion.Close();
             conexion.Open();
 
-            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(IdUsuario, Accion, fecha) " +
                     "values (@User, @Accion, @fecha)", conexion);
-            nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+            nuevoComando.Parameters.Add("@User", SqlDbType.Int).Value = idUsuario;
             nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Elimino una categoria: " + marca;
             nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
             nuevoComando.ExecuteNonQuery();
@@ -182,9 +195,9 @@ namespace SistemaDeInventarios
             conexion.Close();
             conexion.Open();
 
-            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(IdUsuario, Accion, fecha) " +
                     "values (@User, @Accion, @fecha)", conexion);
-            nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+            nuevoComando.Parameters.Add("@User", SqlDbType.Int).Value = idUsuario;
             nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Actualizo una categoria: " + marca +" -> "+ nombreCategoria +". Descripcion: " + descripcion +" ->" + descripcionCategoria;
             nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
             nuevoComando.ExecuteNonQuery();
@@ -230,9 +243,9 @@ namespace SistemaDeInventarios
 
             conexion.Open();
 
-            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(IdUsuario, Accion, fecha) " +
                     "values (@User, @Accion, @fecha)", conexion);
-            nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+            nuevoComando.Parameters.Add("@User", SqlDbType.Int).Value = idUsuario;
             nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Actualizo el nombre de una marca: " + marca + " -> "+ nuevoNombre +" de la categoria: " + categoria;
             nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
             nuevoComando.ExecuteNonQuery();
@@ -268,9 +281,9 @@ namespace SistemaDeInventarios
             conexion.Close();
             conexion.Open();
 
-            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(IdUsuario, Accion, fecha) " +
                     "values (@User, @Accion, @fecha)", conexion);
-            nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+            nuevoComando.Parameters.Add("@User", SqlDbType.Int).Value = idUsuario;
             nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Agrego una nueva marca: " + marca +" a la categoria: " + categoria;
             nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
             nuevoComando.ExecuteNonQuery();
@@ -330,9 +343,9 @@ namespace SistemaDeInventarios
 
             conexion.Open();
 
-            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(IdUsuario, Accion, fecha) " +
                     "values (@User, @Accion, @fecha)", conexion);
-            nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombreUser;
+            nuevoComando.Parameters.Add("@User", SqlDbType.Int).Value = idUsuario;
             nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Elimino una marca: " + marca + " de la categoria: " + categoria;
             nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
             nuevoComando.ExecuteNonQuery();

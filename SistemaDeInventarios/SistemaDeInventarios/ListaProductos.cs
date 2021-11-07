@@ -15,10 +15,22 @@ namespace SistemaDeInventarios
     {
         private string cadenita = Properties.Settings.Default.BD_InvetarioConnectionString;        
         private string nombre;
+        private int idUsuario = -1;
+
         public ListaProductos(String nombre)
         {
             this.nombre = nombre;
             InitializeComponent();
+            SqlConnection conexion = new SqlConnection(cadenita);
+            conexion.Open();
+            SqlCommand obtenerIdUsuario = new SqlCommand("select id from Usuarios where Usuario = @nombre", conexion);
+            obtenerIdUsuario.Parameters.Add("@nombre", SqlDbType.VarChar).Value = nombre;
+            SqlDataReader lector = obtenerIdUsuario.ExecuteReader();
+            while (lector.Read())
+            {
+                idUsuario = Convert.ToInt32(lector["id"]);
+            }
+            conexion.Close();
         }
 
         
@@ -98,9 +110,9 @@ namespace SistemaDeInventarios
                         conexion.Close();
 
                         conexion.Open();
-                        SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                        SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(IdUsuario, Accion, fecha) " +
                             "values (@User, @Accion, @fecha)", conexion);
-                        nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombre;
+                        nuevoComando.Parameters.Add("@User", SqlDbType.Int).Value = idUsuario;
                         nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Agrego " + cantidad + " " + producto;
                         nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
                         nuevoComando.ExecuteNonQuery();
@@ -222,9 +234,9 @@ namespace SistemaDeInventarios
                             conexion.Close();
 
                             conexion.Open();
-                            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(Usuario, Accion, fecha) " +
+                            SqlCommand nuevoComando = new SqlCommand("insert into UsuariosAcciones(IdUsuario, Accion, fecha) " +
                                 "values (@User, @Accion, @fecha)", conexion);
-                            nuevoComando.Parameters.Add("@User", SqlDbType.VarChar).Value = nombre;
+                            nuevoComando.Parameters.Add("@User", SqlDbType.Int).Value = idUsuario;
                             nuevoComando.Parameters.Add("@Accion", SqlDbType.VarChar).Value = "Elimino " + cantidad + " " + producto;
                             nuevoComando.Parameters.Add("@fecha", SqlDbType.DateTime).Value = DateTime.Now;
                             nuevoComando.ExecuteNonQuery();
