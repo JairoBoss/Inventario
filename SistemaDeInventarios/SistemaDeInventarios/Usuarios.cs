@@ -92,7 +92,8 @@ namespace SistemaDeInventarios
         
         private void btnReporteIndividual_Click(object sender, EventArgs e)
         {
-            
+            ExportarUsuarioIndividual a = new ExportarUsuarioIndividual(this.idSeleccionado);
+            a.ShowDialog();
         }
 
         private void btnReporteGeneral_Click(object sender, EventArgs e)

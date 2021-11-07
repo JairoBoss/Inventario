@@ -107,6 +107,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BD_InvetarioDataSet4.xsd</DependentUpon>
     </Compile>
+    <Compile Include="BD_InvetarioDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD_InvetarioDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BD_InvetarioDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD_InvetarioDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BD_InvetarioDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD_InvetarioDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BD_InvetarioDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD_InvetarioDataSet8.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Categorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +184,12 @@
     </Compile>
     <Compile Include="ExportarReporteGenreal.Designer.cs">
       <DependentUpon>ExportarReporteGenreal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportarUsuarioIndividual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarUsuarioIndividual.Designer.cs">
+      <DependentUpon>ExportarUsuarioIndividual.cs</DependentUpon>
     </Compile>
     <Compile Include="home.cs">
       <SubType>Form</SubType>
@@ -234,6 +260,9 @@
     <EmbeddedResource Include="ExportarReporteGenreal.resx">
       <DependentUpon>ExportarReporteGenreal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExportarUsuarioIndividual.resx">
+      <DependentUpon>ExportarUsuarioIndividual.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="home.resx">
       <DependentUpon>home.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,6 +292,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ReporteCategorias.rdlc" />
+    <EmbeddedResource Include="ReporteIndividual.rdlc" />
     <EmbeddedResource Include="ReporteInventario.rdlc" />
     <EmbeddedResource Include="ReporteUsuario.rdlc" />
     <EmbeddedResource Include="Usuarios.resx">
@@ -322,6 +352,50 @@
     </None>
     <None Include="BD_InvetarioDataSet4.xss">
       <DependentUpon>BD_InvetarioDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="BD_InvetarioDataSet5.xsc">
+      <DependentUpon>BD_InvetarioDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="BD_InvetarioDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BD_InvetarioDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BD_InvetarioDataSet5.xss">
+      <DependentUpon>BD_InvetarioDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="BD_InvetarioDataSet6.xsc">
+      <DependentUpon>BD_InvetarioDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="BD_InvetarioDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BD_InvetarioDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BD_InvetarioDataSet6.xss">
+      <DependentUpon>BD_InvetarioDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="BD_InvetarioDataSet7.xsc">
+      <DependentUpon>BD_InvetarioDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="BD_InvetarioDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BD_InvetarioDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BD_InvetarioDataSet7.xss">
+      <DependentUpon>BD_InvetarioDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="BD_InvetarioDataSet8.xsc">
+      <DependentUpon>BD_InvetarioDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="BD_InvetarioDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BD_InvetarioDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BD_InvetarioDataSet8.xss">
+      <DependentUpon>BD_InvetarioDataSet8.xsd</DependentUpon>
     </None>
     <None Include="DSInventario.xsc">
       <DependentUpon>DSInventario.xsd</DependentUpon>

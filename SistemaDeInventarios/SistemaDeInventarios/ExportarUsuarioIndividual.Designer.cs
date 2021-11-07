@@ -1,7 +1,7 @@
 ﻿
 namespace SistemaDeInventarios
 {
-    partial class ExportarReporteGenreal
+    partial class ExportarUsuarioIndividual
     {
         /// <summary>
         /// Required designer variable.
@@ -31,55 +31,54 @@ namespace SistemaDeInventarios
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExportarReporteGenreal));
-            this.ReporteGeneralBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.BD_InvetarioDataSet3 = new SistemaDeInventarios.BD_InvetarioDataSet3();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExportarUsuarioIndividual));
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.ReporteGeneralTableAdapter = new SistemaDeInventarios.BD_InvetarioDataSet3TableAdapters.ReporteGeneralTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.ReporteGeneralBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BD_InvetarioDataSet3)).BeginInit();
+            this.BD_InvetarioDataSet8 = new SistemaDeInventarios.BD_InvetarioDataSet8();
+            this.getUnReporteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.getUnReporteTableAdapter = new SistemaDeInventarios.BD_InvetarioDataSet8TableAdapters.getUnReporteTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.BD_InvetarioDataSet8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getUnReporteBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ReporteGeneralBindingSource
-            // 
-            this.ReporteGeneralBindingSource.DataMember = "ReporteGeneral";
-            this.ReporteGeneralBindingSource.DataSource = this.BD_InvetarioDataSet3;
-            // 
-            // BD_InvetarioDataSet3
-            // 
-            this.BD_InvetarioDataSet3.DataSetName = "BD_InvetarioDataSet3";
-            this.BD_InvetarioDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.ReporteGeneralBindingSource;
+            reportDataSource1.Value = this.getUnReporteBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SistemaDeInventarios.ReporteUsuario.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SistemaDeInventarios.ReporteIndividual.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(922, 611);
             this.reportViewer1.TabIndex = 0;
             // 
-            // ReporteGeneralTableAdapter
+            // BD_InvetarioDataSet8
             // 
-            this.ReporteGeneralTableAdapter.ClearBeforeFill = true;
+            this.BD_InvetarioDataSet8.DataSetName = "BD_InvetarioDataSet8";
+            this.BD_InvetarioDataSet8.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // ExportarReporteGenreal
+            // getUnReporteBindingSource
+            // 
+            this.getUnReporteBindingSource.DataMember = "getUnReporte";
+            this.getUnReporteBindingSource.DataSource = this.BD_InvetarioDataSet8;
+            // 
+            // getUnReporteTableAdapter
+            // 
+            this.getUnReporteTableAdapter.ClearBeforeFill = true;
+            // 
+            // ExportarUsuarioIndividual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(922, 611);
             this.Controls.Add(this.reportViewer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "ExportarReporteGenreal";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Reporte Usuarios Genreal";
-            this.Load += new System.EventHandler(this.ExportarReporteGenreal_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ReporteGeneralBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BD_InvetarioDataSet3)).EndInit();
+            this.Name = "ExportarUsuarioIndividual";
+            this.Text = "Reporte Usuario Individual";
+            this.Load += new System.EventHandler(this.ExportarUsuarioIndividual_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.BD_InvetarioDataSet8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getUnReporteBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -87,8 +86,8 @@ namespace SistemaDeInventarios
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource ReporteGeneralBindingSource;
-        private BD_InvetarioDataSet3 BD_InvetarioDataSet3;
-        private BD_InvetarioDataSet3TableAdapters.ReporteGeneralTableAdapter ReporteGeneralTableAdapter;
+        private System.Windows.Forms.BindingSource getUnReporteBindingSource;
+        private BD_InvetarioDataSet8 BD_InvetarioDataSet8;
+        private BD_InvetarioDataSet8TableAdapters.getUnReporteTableAdapter getUnReporteTableAdapter;
     }
 }
