@@ -2,9 +2,6 @@ C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Release\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Release\SqlServerTypes\x86\msvcr120.dll
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Release\SqlServerTypes\x86\SqlServerSpatial140.dll
-C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Release\SistemaDeInventarios.exe.config
-C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Release\SistemaDeInventarios.exe
-C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Release\SistemaDeInventarios.pdb
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Release\DocumentFormat.OpenXml.dll
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Release\Microsoft.ReportViewer.Common.dll
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Release\Microsoft.ReportViewer.DataVisualization.dll
@@ -87,5 +84,10 @@ C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Release\RdlCompile.compiled
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Release\SistemaDeInventarios.csproj.CoreCompileInputs.cache
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Release\SistemaDeInventarios.csproj.CopyComplete
-C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Release\SistemaDeInventarios.exe
-C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Release\SistemaDeInventarios.pdb
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Release\Inventario.exe.config
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Release\Inventario.exe
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Release\Inventario.pdb
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Release\SistemaDeInventarios.ExportarReporteGenreal.resources
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Release\SistemaDeInventarios.ExportarUsuarioIndividual.resources
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Release\Inventario.exe
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Release\Inventario.pdb

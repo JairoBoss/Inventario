@@ -25,9 +25,6 @@ C:\Users\jairo\source\repos\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\
 C:\Users\jairo\source\repos\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.Detalle.resources
 C:\Users\jairo\source\repos\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.editar.resources
 C:\Users\jairo\source\repos\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.Categorias.resources
-C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Debug\SistemaDeInventarios.exe.config
-C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Debug\SistemaDeInventarios.exe
-C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Debug\SistemaDeInventarios.pdb
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Debug\DocumentFormat.OpenXml.dll
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Debug\SpreadsheetLight.dll
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Debug\System.Drawing.Common.dll
@@ -50,8 +47,6 @@ C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.csproj.GenerateResource.cache
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.csproj.CoreCompileInputs.cache
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.csproj.CopyComplete
-C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.exe
-C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.pdb
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.Exportar.resources
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Debug\SqlServerTypes\x64\msvcr120.dll
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
@@ -118,3 +113,8 @@ C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.Usuarios.resources
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.ExportarReporteGenreal.resources
 C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\SistemaDeInventarios.ExportarUsuarioIndividual.resources
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Debug\Inventario.exe.config
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Debug\Inventario.exe
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\bin\Debug\Inventario.pdb
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\Inventario.exe
+C:\Users\jairo\Desktop\Inventario\SistemaDeInventarios\SistemaDeInventarios\obj\Debug\Inventario.pdb
