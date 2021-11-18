@@ -37,18 +37,39 @@ namespace SistemaDeInventarios
         private void Productos_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dSInventario.Marca' table. You can move, or remove it, as needed.
-            this.marcaTableAdapter.Fill(this.dSInventario.Marca);
+            //this.marcaTableAdapter.Fill(this.dSInventario.Marca);
             // TODO: This line of code loads data into the 'dSInventario.Marca' table. You can move, or remove it, as needed.
-            this.marcaTableAdapter.Fill(this.dSInventario.Marca);
+            //this.marcaTableAdapter.Fill(this.dSInventario.Marca);
+            
             // TODO: This line of code loads data into the 'dSInventario.Categoria' table. You can move, or remove it, as needed.
             this.categoriaTableAdapter.Fill(this.dSInventario.Categoria);
             this.cmbCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-
+            llenarComboCategoria();
             this.cmbCategoria.SelectedIndex = -1;
-            this.cmbMarca.SelectedIndex = -1;
-            
+            this.cmbMarca.SelectedIndex = -1;            
 
+        }
+
+        private void llenarComboCategoria()
+        {
+            SqlConnection conexion = new SqlConnection(cadenita);
+            try
+            {
+                conexion.Open();
+                SqlDataAdapter adaptador = new SqlDataAdapter("select id, nombre from Categoria", conexion);
+                DataTable tablita = new DataTable("categorias");
+                adaptador.Fill(tablita);
+
+                cmbCategoria.DataSource = tablita;
+                cmbCategoria.ValueMember = "id";
+                cmbCategoria.DisplayMember = "nombre";
+                conexion.Close();
+            }
+            catch (Exception e1)
+            {
+
+            }
         }
 
         private void btnAgregarImagen_Click(object sender, EventArgs e)
