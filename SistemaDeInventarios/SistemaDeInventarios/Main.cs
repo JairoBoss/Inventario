@@ -61,6 +61,227 @@ namespace SistemaDeInventarios
             abrirFormEnPanel(new home());
         }
 
+        private bool verificarCategoria(String categoria)       
+        {
+            //Verificar si la categoria de ese producto existe
+            bool existe = false;
+
+            SqlConnection conexion = new SqlConnection(cadenita);
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand comando = new SqlCommand("select id, nombre from Categoria where nombre = @p1 ", conexion);
+                comando.Parameters.Add("@p1", SqlDbType.VarChar).Value = categoria;
+                SqlDataReader lector = comando.ExecuteReader();
+
+                int idCategoria = -1;
+                string nombreCategoria = "";
+                
+                while (lector.Read())
+                {
+                    idCategoria = Convert.ToInt32(lector["Id"].ToString());                    
+                    categoria = lector["nombre"].ToString();
+                }
+                conexion.Close();
+
+                if(idCategoria != -1)
+                {
+                    existe = true;
+                }
+                else
+                {
+                    conexion.Open();
+
+
+                    SqlCommand comando2 = new SqlCommand("insert into Categoria (Nombre, Descripcion) values (@p1, @p2)", conexion);
+                    comando2.Parameters.Add("@p1", SqlDbType.VarChar).Value = categoria;
+                    comando2.Parameters.Add("@p2", SqlDbType.VarChar).Value = "Categoria insertada desde excel";
+                    comando2.ExecuteNonQuery();
+                    conexion.Close();
+                    
+                }
+
+            }
+            catch (Exception e1)
+            {}
+            return existe;
+        }
+
+        private int getCategoria(String categoria)
+        {
+            SqlConnection conexion = new SqlConnection(cadenita);
+            conexion.Open();
+
+            SqlCommand comando = new SqlCommand("select id, nombre from Categoria where nombre = @p1 ", conexion);
+            comando.Parameters.Add("@p1", SqlDbType.VarChar).Value = categoria;
+            SqlDataReader lector = comando.ExecuteReader();
+
+            int idCategoria = -1;
+            string nombreCategoria = "";
+
+            while (lector.Read())
+            {
+                idCategoria = Convert.ToInt32(lector["Id"].ToString());
+                categoria = lector["nombre"].ToString();
+            }
+            conexion.Close();
+
+            return idCategoria;
+        }
+
+        private int getMarca(String marca)
+        {
+            SqlConnection conexion = new SqlConnection(cadenita);
+            conexion.Open();
+
+            SqlCommand comando = new SqlCommand("select id from Marca where marca = @p1 ", conexion);
+            comando.Parameters.Add("@p1", SqlDbType.VarChar).Value = marca;
+            SqlDataReader lector = comando.ExecuteReader();
+
+            int idCategoria = -1;
+            
+
+            while (lector.Read())
+            {
+                idCategoria = Convert.ToInt32(lector["Id"].ToString());                
+            }
+            conexion.Close();
+
+            return idCategoria;
+        }
+
+        private bool verificarMarca(String marca, int categoria)
+        {
+            //Verificar si la categoria de ese producto existe
+            bool existe = false;
+
+            SqlConnection conexion = new SqlConnection(cadenita);
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand comando = new SqlCommand("select id, marca from Marca where Marca = @p1 ", conexion);
+                comando.Parameters.Add("@p1", SqlDbType.VarChar).Value = marca;
+                SqlDataReader lector = comando.ExecuteReader();
+
+                int idCategoria = -1;
+                string nombreCategoria = "";
+
+                while (lector.Read())
+                {
+                    idCategoria = Convert.ToInt32(lector["Id"].ToString());
+                    nombreCategoria = lector["Marca"].ToString();
+                }
+                conexion.Close();
+
+                if (idCategoria != -1)
+                {
+                    
+                    existe = true;
+                }
+                else
+                {
+                    
+                    conexion.Open();
+
+                    SqlCommand comando2 = new SqlCommand("insert into Marca (Marca, Categoria) values (@p1, @p2)", conexion);
+                    comando2.Parameters.Add("@p1", SqlDbType.VarChar).Value = marca;
+                    comando2.Parameters.Add("@p2", SqlDbType.VarChar).Value = categoria;
+                    comando2.ExecuteNonQuery();
+                    conexion.Close();
+
+                }
+
+            }
+            catch (Exception e1)
+            { }
+            return existe;
+        }
+
+        private bool productoExistente(String nombre, int categoria, int marca)
+        {
+            bool existe = false;
+
+            SqlConnection conexion = new SqlConnection(cadenita);
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand comando = new SqlCommand("select id, nombreDelProducto from Productos" +
+                    " where (nombreDelProducto = @p1) and (categoria = @p2) and (marca = @p3) ", conexion);
+                comando.Parameters.Add("@p1", SqlDbType.VarChar).Value = nombre;
+                comando.Parameters.Add("@p2", SqlDbType.Int).Value = categoria;
+                comando.Parameters.Add("@p3", SqlDbType.Int).Value = marca;
+                SqlDataReader lector = comando.ExecuteReader();
+
+                int idCategoria = -1;
+                string nombreee = "";
+                while (lector.Read())
+                {
+                    idCategoria = Convert.ToInt32(lector["Id"].ToString());
+                    nombreee = lector["nombreDelProducto"].ToString();
+                }
+                conexion.Close();
+                
+                if (idCategoria != -1)
+                {
+                    
+                    //Hacemos un update al producto con la cantidad correspondiente
+                    existe = true;
+                }
+                else
+                {
+                    
+
+
+/*
+                    conexion.Open();
+                    SqlCommand comando2 = new SqlCommand("insert into Categoria (Nombre, Descripcion) values (@p1, @p2)", conexion);
+                    comando2.Parameters.Add("@p1", SqlDbType.VarChar).Value = categoria;
+                    comando2.Parameters.Add("@p2", SqlDbType.VarChar).Value = "Categoria insertada desde excel";
+                    //comando2.ExecuteNonQuery();
+                    conexion.Close();
+*/
+                }
+
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show(e1.Message);
+            }
+            return existe;
+        }
+
+        private int getIdProducto(String nombre, int categoria, int marca)
+        {
+            SqlConnection conexion = new SqlConnection(cadenita);
+
+            conexion.Open();
+
+            SqlCommand comando = new SqlCommand("select id, nombreDelProducto from Productos" +
+                " where (nombreDelProducto = @p1) and (categoria = @p2) and (marca = @p3) ", conexion);
+            comando.Parameters.Add("@p1", SqlDbType.VarChar).Value = nombre;
+            comando.Parameters.Add("@p2", SqlDbType.Int).Value = categoria;
+            comando.Parameters.Add("@p3", SqlDbType.Int).Value = marca;
+            SqlDataReader lector = comando.ExecuteReader();
+
+            int idCategoria = -1;
+            
+            while (lector.Read())
+            {
+                idCategoria = Convert.ToInt32(lector["Id"].ToString());
+
+            }
+            conexion.Close();
+            
+            return idCategoria;
+        }
+
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Importar.InitialDirectory = "C:\\";
@@ -79,9 +300,126 @@ namespace SistemaDeInventarios
                     int cantidad = Convert.ToInt32(sl.GetCellValueAsString(iRow, 4));
                     double precio = Convert.ToDouble(sl.GetCellValueAsString(iRow, 5));
                     string descripcion = sl.GetCellValueAsString(iRow, 6);
+
+                    /*
+                     AQUI TENEMOS QUE CHECAR QUE ROLLO
+                     */
+
                     
+                    bool verifyCategoria = verificarCategoria(categoria);
+                    bool verifyMarca = verificarMarca(marca, getCategoria(categoria));
+
+                    int marcaNumber = getMarca(marca);
+                    int categoriaNumber = getCategoria(categoria);
+
+                    if(!verifyCategoria|| !verifyMarca )
+                    {
+                        /*if (!verifyCategoria)
+                        {
+                            MessageBox.Show("No existe la categoria, por lo tanto aqui se tiene que crear");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No existe la marca, todo bien");
+                        }*/
+                        /*
+                         * 
+                         * 
+                         * 
+                         * 
+                        try
+                        {
+                            conexion.Open();
+                            SqlCommand comando = new SqlCommand("insert into productos(nombreDelProducto, categoria, marca, cantidad, precio, descripcion, diaDeRegistro) " +
+                                "values (@p1, @p2, @p3, @p4, @p5, @p6, @p7)", conexion);
+                            comando.Parameters.Add("@p1", SqlDbType.VarChar).Value = nombreDelProducto;
+                            comando.Parameters.Add("@p2", SqlDbType.Int).Value = categoriaNumber;
+                            comando.Parameters.Add("@p3", SqlDbType.Int).Value = marcaNumber;
+                            comando.Parameters.Add("@p4", SqlDbType.Int).Value = cantidad;
+                            comando.Parameters.Add("@p5", SqlDbType.Float).Value = precio;
+                            comando.Parameters.Add("@p6", SqlDbType.VarChar).Value = descripcion;
+                            comando.Parameters.Add("@p7", SqlDbType.DateTime).Value = diaActual;
+                            comando.ExecuteNonQuery();
+                            conexion.Close();
+                        }
+                        catch (Exception e1)
+                        {
+                            MessageBox.Show(e1.Message);
+                        }                                                 
+                         *
+                         *
+                         *
+                         */
+
+                    }
+                    else
+                    {
+                        int cantidadDelProductoLoL = -1;
+                        if (!productoExistente(nombreDelProducto, categoriaNumber, marcaNumber))
+                        {
+                            Producto producto = new Producto(nombreDelProducto, categoria, marca, cantidad, precio, descripcion, diaActual);
+                            try
+                            {
+                                conexion.Open();                                
+                                SqlCommand comando = new SqlCommand("insert into productos(nombreDelProducto, categoria, marca, cantidad, precio, descripcion, diaDeRegistro) " +
+                                    "values (@p1, @p2, @p3, @p4, @p5, @p6, @p7)", conexion);
+                                comando.Parameters.Add("@p1", SqlDbType.VarChar).Value = nombreDelProducto;
+                                comando.Parameters.Add("@p2", SqlDbType.Int).Value = categoriaNumber;
+                                comando.Parameters.Add("@p3", SqlDbType.Int).Value = marcaNumber;
+                                comando.Parameters.Add("@p4", SqlDbType.Int).Value = cantidad;
+                                comando.Parameters.Add("@p5", SqlDbType.Float).Value = precio;
+                                comando.Parameters.Add("@p6", SqlDbType.VarChar).Value = descripcion;
+                                comando.Parameters.Add("@p7", SqlDbType.DateTime).Value = diaActual;
+                                comando.ExecuteNonQuery();
+                                conexion.Close();
+                            }
+                            catch (Exception e1)
+                            {
+                                MessageBox.Show(e1.Message);
+                            }
+                        }
+                        else
+                        {
+                            
+                            int idProducto = getIdProducto(nombreDelProducto, categoriaNumber, marcaNumber);
+                            try
+                            {
+                                conexion.Open();
+                                SqlCommand comando = new SqlCommand("select cantidad from productos where id = @p1" , conexion);
+                                
+                                comando.Parameters.Add("@p1", SqlDbType.Int).Value = idProducto;
+
+                                SqlDataReader lector = comando.ExecuteReader();                                
+                                while (lector.Read())
+                                {
+                                    cantidadDelProductoLoL = Convert.ToInt32(lector["cantidad"].ToString());
+
+                                }
+                                
+                                conexion.Close();
 
 
+                            }
+                            catch (Exception e1)
+                            {
+                                
+                            }
+                            
+
+                            int x = cantidad + cantidadDelProductoLoL;
+
+
+                            actualizarCantidad(x, idProducto);
+
+                        }
+                        /*
+                         *
+                         * Checar si existe el producto, si existe lo actualizamos
+                         *
+                         */
+                    }
+                    
+                    /*
                     Producto producto = new Producto(nombreDelProducto, categoria, marca, cantidad, precio, descripcion, diaActual);
                     try
                     {
@@ -102,11 +440,26 @@ namespace SistemaDeInventarios
                     {
                         MessageBox.Show(e1.Message);
                     }
+                    */
                     iRow++;
                 }
-                MessageBox.Show("Se importo con exito");
+                
             }
         }
+
+        private void actualizarCantidad(int x, int y)
+        {
+            SqlConnection conexion = new SqlConnection(cadenita);
+            conexion.Open();
+            SqlCommand nuevoComando = new SqlCommand("update productos set cantidad = @p1 where id = @p2", conexion);
+            nuevoComando.Parameters.Add("@p1", SqlDbType.Int).Value = x;
+            nuevoComando.Parameters.Add("@p2", SqlDbType.Int).Value = y;
+
+            //MessageBox.Show(x + " " + y);
+            nuevoComando.ExecuteNonQuery();
+            conexion.Close();
+        }
+        
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {

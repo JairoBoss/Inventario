@@ -37,33 +37,11 @@ namespace SistemaDeInventarios
         private void ListaProductos_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dSInventario.Productos' table. You can move, or remove it, as needed.
-            //this.productosTableAdapter.Fill(this.dSInventario.Productos);
+            this.productosTableAdapter.Fill(this.dSInventario.Productos);
 
-            //actualizarItems();
+            actualizarItems();
             this.dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 13);
             this.dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
-            obtenerArticulos();
-        }
-
-        private void obtenerArticulos()
-        {
-            SqlConnection conexion = new SqlConnection(cadenita);
-
-            try
-            {
-                conexion.Open();
-                SqlCommand comando = new SqlCommand("select id, nombreDelProducto, categoria, marca, cantidad, precio," +
-                    " descripcion from Productos", conexion);
-                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
-                DataSet dataset = new DataSet();
-                adaptador.Fill(dataset);
-
-                dataGridView1.DataSource = dataset.Tables[0];
-                conexion.Close();
-            }
-            catch(Exception e1)
-            {
-            }
 
         }
 
@@ -112,7 +90,7 @@ namespace SistemaDeInventarios
                     {
                         int idProducto = Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString());
                         int cantidadProducto = Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[4].Value.ToString());
-
+                        
 
                         int cantidad = Convert.ToInt16(this.txtCantidad.Text);
                         cantidadProducto += cantidad;
@@ -145,8 +123,8 @@ namespace SistemaDeInventarios
                         txtCantidad.Clear();
 
                         //Sumamos uno
-                        //this.productosTableAdapter.ActualizarCantidad(cantidadProducto, idProducto); //Realiza la operacion
-                        //this.productosTableAdapter.Fill(this.dSInventario.Productos); //Actualiza
+                        this.productosTableAdapter.ActualizarCantidad(cantidadProducto, idProducto); //Realiza la operacion
+                        this.productosTableAdapter.Fill(this.dSInventario.Productos); //Actualiza
 
                     }
 
@@ -233,14 +211,14 @@ namespace SistemaDeInventarios
                             if (cantidadProducto > 0)
                             {
                                 //Restamos uno
-                                //this.productosTableAdapter.ActualizarCantidad(cantidadProducto, idProducto); //Realiza la operacion
-                                //this.productosTableAdapter.Fill(this.dSInventario.Productos); //Actualiza                                
+                                this.productosTableAdapter.ActualizarCantidad(cantidadProducto, idProducto); //Realiza la operacion
+                                this.productosTableAdapter.Fill(this.dSInventario.Productos); //Actualiza                                
                             }
                             else
                             {
                                 //Lo eliminamos de la tabla
-                                //this.productosTableAdapter.EliminarProducto(idProducto); //Realiza la operacion
-                                //this.productosTableAdapter.Fill(this.dSInventario.Productos); //Actualiza
+                                this.productosTableAdapter.EliminarProducto(idProducto); //Realiza la operacion
+                                this.productosTableAdapter.Fill(this.dSInventario.Productos); //Actualiza
                             }
 
                             SqlConnection conexion = new SqlConnection(cadenita);
@@ -267,7 +245,7 @@ namespace SistemaDeInventarios
                         }
                         else
                         {
-                            MessageBox.Show("ERROR NO PUEDES ELIMINAR MAS DE LO QUE HAY XD, cantidad "+ cantidadProducto);
+                            MessageBox.Show("ERROR NO PUEDES ELIMINAR MAS DE LO QUE HAY, solo hay: "+ cantidadProducto);
                             
                         }
 
@@ -382,16 +360,6 @@ namespace SistemaDeInventarios
                 e.Handled = true;
                 return;
             }
-        }
-
-        private void productosBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         /*private void pictureBox4_Click(object sender, EventArgs e)

@@ -86,12 +86,16 @@ namespace SistemaDeInventarios
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.DataSource = this.categoriaBindingSource;
+            this.cmbCategoria.DisplayMember = "Nombre";
             this.cmbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Location = new System.Drawing.Point(109, 138);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(158, 28);
             this.cmbCategoria.TabIndex = 5;
+            this.cmbCategoria.ValueMember = "Id";
+            this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.cmbCategoria_SelectedIndexChanged);
             // 
             // categoriaBindingSource
             // 
